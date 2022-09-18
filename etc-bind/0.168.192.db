@@ -1,0 +1,13 @@
+$TTL 2d
+@   IN  SOA     ns1.example.com. root.example.com. (
+        2003080800  ;Serial
+        604800        ;Refresh
+        86400        ;Retry
+        2419200      ;Expire
+        604800       ;Minimum TTL
+)
+        # define Name Server
+        IN  NS      ns1.example.com.
+
+# define each hostname of an IP address
+249      IN  PTR     ns1.example.com.

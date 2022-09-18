@@ -1,0 +1,31 @@
+version: '3.9'
+services:
+  bind9:
+    image: ubuntu/bind9:9.18-22.04_beta
+    restart: unless-stopped
+    container_name: bind9-container
+    ports:
+      #- 30053:53
+      - "53:53/tcp"
+      - "53:53/udp"
+    environment:
+      TZ: "UTC"
+      BIND9_USER: "bind"
+    volumes:
+      #- /path/to/bind/configuration:/etc/bind/named.conf
+      #- named_volume:/etc/bind/named.conf
+      - named_volume:/etc/bind
+      #- ./named_volume/named.conf:/etc/bind/named.conf
+      #- /path/to/cached/data:/var/cache/bind
+      - cache_volume:/var/cache/bind
+      #- ./cache_volume:/var/cache/bind
+      #- /path/to/resource/records:/var/lib/bind
+      - records_volume:/var/lib/bind
+      #- ./records_volume:/var/lib/bind
+      - default_volume:/etc/default
+
+volumes:
+  named_volume:
+  cache_volume:
+  records_volume:
+  default_volume:

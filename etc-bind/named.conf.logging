@@ -1,0 +1,12 @@
+logging {
+  channel example_log {
+    // uses a relative path name and the directory statement to
+    // expand to /var/log/named/example.log
+    file "log/named/example.log" versions 3 size 250k;
+    // only log info and up messages - all others discarded
+    severity info;
+  };
+  category default {
+    example_log;
+  };
+};

@@ -1,0 +1,22 @@
+;
+; BIND data file for local loopback interface
+;
+;$TTL   604800
+$TTL 2d ; default TTL for zone
+$ORIGIN example.com. ; base domain-name
+; Start of Authority RR defining the key characteristics of the zone (domain)
+@       IN      SOA     ns1.example.com. root.example.com. (
+                         2003080800     ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+; name server RR for the domain
+        IN      NS      ns1.example.com.
+; mail server RRs for the zone (domain)
+        IN      MX      10      mail.example.com.
+; domain hosts includes NS and MX records defined above
+; plus any others required
+ns1     IN      A       192.168.0.249
+mail    IN      A       192.168.0.221
+passbolt        IN      A       192.168.0.210
